@@ -20,8 +20,8 @@ var clientConfigTest = constant.ClientConfig{
 }
 
 var serverConfigTest = constant.ServerConfig{
-	IpAddr:      "console.nacos.io",
-	Port:        80,
+	IpAddr:      "http://192.168.0.174",
+	Port:        30382,
 	ContextPath: "/nacos",
 }
 

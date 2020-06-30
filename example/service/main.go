@@ -1,4 +1,4 @@
-package service
+package main
 
 import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
@@ -15,8 +15,8 @@ func main() {
 	client, err := clients.CreateNamingClient(map[string]interface{}{
 		"serverConfigs": []constant.ServerConfig{
 			{
-				IpAddr: "console.nacos.io",
-				Port:   80,
+				IpAddr: "http://192.168.0.174",
+				Port:   30382,
 			},
 		},
 		"clientConfig": constant.ClientConfig{
@@ -34,8 +34,8 @@ func main() {
 	}
 
 	example.ExampleServiceClient_RegisterServiceInstance(client, vo.RegisterInstanceParam{
-		Ip:          "10.0.0.11",
-		Port:        8848,
+		Ip:          "http://192.168.0.174",
+		Port:        30382,
 		ServiceName: "demo.go",
 		Weight:      10,
 		ClusterName: "a",
@@ -55,8 +55,8 @@ func main() {
 	example.ExampleServiceClient_Subscribe(client, param)
 	time.Sleep(20 * time.Second)
 	example.ExampleServiceClient_RegisterServiceInstance(client, vo.RegisterInstanceParam{
-		Ip:          "10.0.0.12",
-		Port:        8848,
+		Ip:          "http://192.168.0.174",
+		Port:        30382,
 		ServiceName: "demo.go",
 		Weight:      10,
 		ClusterName: "a",
@@ -67,9 +67,9 @@ func main() {
 	time.Sleep(20 * time.Second)
 	example.ExampleServiceClient_UnSubscribe(client, param)
 	example.ExampleServiceClient_DeRegisterServiceInstance(client, vo.DeregisterInstanceParam{
-		Ip:          "10.0.0.11",
+		Ip:          "http://192.168.0.174",
 		Ephemeral:   true,
-		Port:        8848,
+		Port:        30382,
 		ServiceName: "demo.go",
 		Cluster:     "a",
 	})
